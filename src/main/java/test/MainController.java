@@ -11,8 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MainController implements Initializable{
@@ -23,10 +25,15 @@ public class MainController implements Initializable{
     @FXML private TableColumn<Jobs, String> NotesColumn;
     @FXML private TableColumn<Jobs, String> ClientColumn;
     @FXML private TableColumn<Jobs, LocalDate> CreationColumn;
+    @FXML private TextField jobID;
+    @FXML private DatePicker date;
+    @FXML private TextField notes;
+    @FXML private TextField client;
+    @FXML private TextField status;
 
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+    private void switchToAdd() throws IOException {
+        App.setRoot("add");
     }
 
     @Override
@@ -49,6 +56,12 @@ public class MainController implements Initializable{
         jobs.add(new Jobs(5,"Invoicing","No notes","Wok Tang", LocalDate.of(2022, Month.JANUARY, 19)));
         jobs.add(new Jobs(6,"Active","Client is on vaccation, not urgent","Jason Seid", LocalDate.of(2022, Month.JANUARY, 19)));
         return jobs;
+    }
+
+    @FXML
+    public void addButton(){
+        Jobs job = new Jobs(Integer.parseInt(jobID.getText()), status.getText(), notes.getText(), client.getText(), date.getValue());
+        tableView.getItems().add(job);
     }
 
 

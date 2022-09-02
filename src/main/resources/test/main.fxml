@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -11,38 +14,61 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.MainController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.MainController">
    <children>
       <Pane prefHeight="432.0" prefWidth="229.0" style="-fx-background-color: CORNFLOWERBLUE;">
          <children>
-            <Label layoutX="18.0" layoutY="36.0" text="Welcome to Job planner" textFill="WHITE">
+            <Label layoutX="19.0" layoutY="94.0" text="Welcome to Job Planner" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="129.0" layoutY="200.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="83.0" text="Edit jobs" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/fergus.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="90.0" prefHeight="27.0" prefWidth="153.0" text="On the right are active jobs" textFill="WHITE" />
-            <Button layoutX="18.0" layoutY="200.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="83.0" text="Add jobs" />
-         </children></Pane>
+            <VBox layoutX="19.0" layoutY="121.0" prefHeight="363.0" prefWidth="193.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="61.0" prefWidth="251.0" text="Add Jobs">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="3.0" prefWidth="537.0" style="-fx-background-color: black;" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="286.0" text="Insert Job ID" />
+                  <TextField fx:id="jobID" prefHeight="25.0" prefWidth="225.0" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="537.0" text="Todays date" />
+                  <DatePicker fx:id="date" prefHeight="25.0" prefWidth="291.0" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="537.0" text="Job status" />
+                  <TextField fx:id="status" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="537.0" text="Add notes for job" />
+                  <TextField fx:id="notes" />
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="537.0" text="Name of Client" />
+                  <TextField fx:id="client" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addButton" prefHeight="31.0" prefWidth="300.0" text="Add" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
       <VBox prefHeight="431.0" prefWidth="537.0">
          <children>
-            <Label alignment="CENTER" prefHeight="75.0" prefWidth="167.0" text="Current Jobs">
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="131.0" text="Current Jobs">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Pane prefHeight="45.0" prefWidth="537.0" style="-fx-background-color: black;" />
-            <TableView fx:id="tableView" prefHeight="431.0" prefWidth="481.0">
+            <Pane prefHeight="4.0" prefWidth="537.0" style="-fx-background-color: black;" />
+            <TableView fx:id="tableView" prefHeight="455.0" prefWidth="537.0">
                <columns>
                   <TableColumn fx:id="JobColumn" prefWidth="74.66665399074554" text="Job ID" />
                   <TableColumn fx:id="StatusColumn" prefWidth="76.00000762939453" text="Status" />
-                  <TableColumn fx:id="CreationColumn" prefWidth="145.3332977294922" text="Creation date/time" />
-                  <TableColumn fx:id="NotesColumn" minWidth="0.0" prefWidth="142.0" text="Notes" />
+                  <TableColumn fx:id="CreationColumn" prefWidth="112.66661071777344" text="Creation date" />
+                  <TableColumn fx:id="NotesColumn" minWidth="0.0" prefWidth="174.66668701171875" text="Notes" />
                   <TableColumn fx:id="ClientColumn" prefWidth="100.66671752929688" text="Client details" />
                </columns>
             </TableView>
